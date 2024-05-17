@@ -35,9 +35,6 @@ export const did_register = async (ctx: Context) => {
 
         const testnet = (data.network === 1) ? "Mainnet" : "Preprod";
 
-        if (!is32Byte(data.initiator)) {
-            throw new Error("initiator should be less than equal to 32 bytes ");
-        }
 
         if (!is32Byte(data.rngfid)) {
             throw new Error("rngfid should be less than equal to 32 bytes");

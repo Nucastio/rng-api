@@ -38,9 +38,6 @@ export const updateOracle = async (ctx: Context) => {
             throw { message: "Enter valid network value" };
 
         const testnet = (data.network === 1) ? "Mainnet" : "Preprod";
-        if (!is32Byte(data.initiator)) {
-            throw new Error("Initiator must not exceed 32 bytes");
-        }
         if (!is32Byte(data.rngfid)) {
             throw new Error("rngfid should be less than equal to 32 bytes");
         }
