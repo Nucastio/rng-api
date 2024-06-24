@@ -5,10 +5,18 @@ import { RegisterOracleDIDRoute } from "./controllers/oracle/register.controller
 import { UpdateOracleDIDRoute } from "./controllers/oracle/update.controller.ts";
 import { QueryOracleDIDRoute } from "./controllers/oracle/query.controller.ts";
 import { logger } from "https://deno.land/x/abc@v1.3.3/middleware/logger.ts";
+import { cors } from "https://deno.land/x/abc@v1.3.3/middleware/cors.ts";
 
 const app = new Application();
 
 app.use(logger());
+
+app.use(
+  cors({
+    allowOrigins: ["*"],
+    allowHeaders: ["*"],
+  })
+);
 
 app.post("/api/rng/generate", GenerateRNGRoute);
 app.post("/api/oracle/mint", MintOracleDIDRoute);
